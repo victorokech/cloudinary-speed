@@ -276,7 +276,7 @@ Open the file `app/Http/Livewire/ImageUpload.php`. Here, we are going to add a m
           ]
       ])->getSecurePath();
    
-      $non-optimal = cloudinary()->upload($media->getRealPath(),[
+      $non_optimal = cloudinary()->upload($media->getRealPath(),[
         'folder_name' => $folder   
       ])->getSecurePath();
                     
