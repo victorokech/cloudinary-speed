@@ -127,44 +127,43 @@ This basically includes the Livewire component we created earlier into our `welc
 
 **Note:** Please ensure you go through the [Livewire documentation](https://laravel-livewire.com/docs/2.x/quickstart), to learn how to install and set it up.
 
-3. Open the file `resources/views/livewire/file-upload.blade.php` and populate it with the following code:
+3. Open the file `resources/views/livewire/image-upload.blade.php` and populate it with the following code:
 
 ```html
 <form class="mb-5" wire:submit.prevent="upload">
-    <div class="form-group row mt-5 mb-3">
-        <div class="input-group">
-            <input type="file" class="form-control @error('media') is-invalid @enderror"
-                   placeholder="Choose file..." id="media-file" type="file" wire:model="media">
-            @error('media')
-            <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <small class="text-muted text-center mt-2" wire:loading wire:target="media">
-            {{ __('Uploading') }}&hellip;
-        </small>
-    </div>
-    <div class="text-center">
-        <button type="submit" class="btn btn-sm btn-primary w-25">
-            <i class="fas fa-check mr-1"></i> {{ __('Crop') }}
-        </button>
-    </div>
+	<div class="form-group row mt-5 mb-3">
+		<div class="input-group">
+			<input type="file" class="form-control @error('media') is-invalid @enderror"
+			       placeholder="Choose file..." id="media-file" type="file" wire:model="media">
+			@error('media')
+			<div class="invalid-feedback">{{ $message }}</div>
+			@enderror
+		</div>
+		<small class="text-muted text-center mt-2" wire:loading wire:target="media">
+			{{ __('Uploading') }}&hellip;
+		</small>
+	</div>
+	<div class="text-center">
+		<button type="submit" class="btn btn-sm btn-primary w-25">
+			<i class="fas fa-check mr-1"></i> {{ __('Optimize') }}
+		</button>
+	</div>
 </form>
 
-<div class="container">
-    <div class="row">
-        @foreach(optimizedImages as $key => $link)
-        <div class="col-sm mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <img class="card-img-top" src="{{ $link }}" alt="Card image cap">
-                    <h5 class="card-title mt-4 fw-bold">
-                        {{ $key }}
-                    </h5>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
+<!-- Original Image -->
+<div class="card-body">
+	<img class="card-img-top" src="{{ $media }}" alt="Original Image" width="400" height="600">
+	<h5 class="card-title mt-4 fw-bold">
+		Original Image
+	</h5>
+</div>
+
+<!-- Optimized Image -->
+<div class="card-body">
+	<img class="card-img-top" src="{{ $optimizedImage }}" alt="Optimized Image" width="400" height="600">
+	<h5 class="card-title mt-4 fw-bold">
+		Optimized Image
+	</h5>
 </div>
 ```
 
@@ -173,12 +172,12 @@ through Cloudinary will display the optimized image file.
 
 The first part of the code above is a form with an input of type file and a submit button.
 
-The second part will take the response from Cloudinary and display the optimized and compressed image.
+The second part will take the response from Cloudinary and display the non-optimized image and the optimized image from Cloudinary.
 
 **Note:** you will see the implementation in code shortly.
 
 ## Understanding Image Optimization with Cloudinary
-Before we start coding away, we need to understand what image optimization is and specifically how to do it well with Cloudinary.
+Hold your horses, before we start coding away, we need to understand what image optimization is and specifically how to do it well with Cloudinary.
 
 ### The Right Image Format
 There are several image formats with PNGs and JPEGs being some of the most popular formats. Image formats have their strengths and weaknesses like PNGs allow you to display transparent images which JPEGs cannot.
