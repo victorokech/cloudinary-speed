@@ -271,7 +271,7 @@ Open the file `app/Http/Livewire/ImageUpload.php`. Here, we are going to add a m
           'width'   => $width,
           'height'  => $height,
           'quality' => $quality,
-          'fetch'   => $fetch,
+          'fetch_format'   => $fetch,
           'crop'    => $crop
           ]
       ])->getSecurePath();
@@ -291,7 +291,7 @@ Open the file `app/Http/Livewire/ImageUpload.php`. Here, we are going to add a m
       $this->media = $non_optimal;
     } 
     ```
-   The code above will upload an image to Cloudinary and return an optimized image URL. Cloudinary automatically optimizes the image size with no compromise in quality. This is done by setting the `auto` value for the `quality` and `fetch` attributes. We have also specified the image width and height which will instruct Cloudinary to resize and scale the image based on these parameters.
+   The code above will upload an image to Cloudinary and return an optimized image URL. Cloudinary automatically optimizes the image size with no compromise in quality. This is done by setting the `auto` value for the `quality` and `fetch_format` attributes. We have also specified the image width and height which will instruct Cloudinary to resize and scale the image based on these parameters.
     
     **Note:** There is a non optimized image for comparison.
 

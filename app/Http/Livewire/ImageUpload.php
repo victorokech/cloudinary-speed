@@ -46,7 +46,7 @@
 						'width'   => $width,
 						'height'  => $height,
 						'quality' => $quality,
-						'fetch'   => $fetch,
+						'fetch_format'   => $fetch,
 						'crop'    => $crop
 					]
 				])->getSecurePath();
