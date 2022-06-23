@@ -20,7 +20,7 @@ Images make up a large portion of the overall web traffic. On Instagram alone, o
 
 ## PHPSandbox and Github
 
-The final project can be viewed on [PHPSandbox](https://phpsandbox.io/e/x/nuopv?&layout=EditorPreview&iframeId=61ihmshq1o&theme=dark&defaultPath=/&showExplorer=no&openedFiles=/app/Http/Livewire/FileUpload.php) and the entire source code is available on my [Github](https://github.com/victorokech/cloudinary-speed) repository.
+The final project can be viewed on [PHPSandbox]( https://phpsandbox.io/e/x/4pg3m?layout=EditorPreview&defaultPath=%2F&theme=dark&showExplorer=no&openedFiles= ) and the entire source code is available on my [Github](https://github.com/victorokech/cloudinary-speed) repository.
 
 ## Prerequisites
 
@@ -300,11 +300,11 @@ If you successfully implemented the code above, you should be able to see the fo
 
 ![Speedy Web Apps with Cloudinary](https://res.cloudinary.com/dgrpkngjn/image/upload/v1655977607/assets/cloudinary_speed_vdsole.png)
 
-As you can see the Cloudinary Optimized Image loads faster. Don't take my word for it, you can test it out on this demo. Just upload a super large image, less than 10 MB of course. 
+As you can see the Cloudinary Optimized Image loads faster. Don't take my word for it, you can test it out on this [demo](https://4pg3m.ciroue.com/). Just upload a super large image, less than 10 MB of course. 
 
 **Note:** Cloudinary is super powerful for the management of your media assets in your project that will not only optimize your assets for visual quality but also cost savings in terms of performance, storage, AI powered transformations as well.
 
-# Do More with Cloudinary
+# Optimization with Cloudinary
 Cloudinary is your A to Z media management solution - upload, storage, administration, manipulation, optimization and delivery.
 
 [Get started](https://cloudinary.com/signup) with Cloudinary in your Laravel projects for FREE!
