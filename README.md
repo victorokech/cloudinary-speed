@@ -36,20 +36,20 @@ start ensure you have Composer installed on your machine.
 1. Install [Composer](https://getcomposer.org/) and [PHP](https://www.php.net/manual/en/install.windows.tools.php) on
    your development or production machine.
 2. Install Laravel
-
+   
    a) Via Composer:
-
+   
    `composer create-project --prefer-dist laravel/laravel cloudinary-speed`
-
+   
    b) Via Laravel Installer
-
+   
    `composer global require laravel/installer`
-
+   
    `laravel new cloudinary-speed`
 3. In step 2b above we have created a project folder called `cloudinary-speed`. Change the directory to this folder and run the local development server by typing the following commands:
-
+   
    `cd cloudinary-speed`
-
+   
    `php artisan serve`
 
 The Laravel Project is now up and running.
@@ -70,7 +70,7 @@ To implement a content-aware crop for our media files with Cloudinary:
 ![Cloudinary Dashboard](https://res.cloudinary.com/dgrpkngjn/image/upload/v1655976836/assets/cloudinary_dashboard.png)
 
 3. Install [Cloudinary’s Laravel SDK](https://github.com/cloudinary-labs/cloudinary-laravel#installation):
-
+   
    `composer require cloudinary-labs/cloudinary-laravel`
 
 **Note**: Please ensure you follow all the steps in the #Installation section. Publish the configuration file and add
@@ -81,7 +81,7 @@ the Cloudinary credentials you noted in Step 1 to the .env file.
 To demonstrate image optimization we will need a UI (User Interface), we will be using the Laravel package Livewire to build this and the image file upload functionality.
 
 1. Install Livewire Package by running the following command in your Laravel project:
-
+   
    `composer require livewire/livewire`
 2. Include Livewire scripts and styles on every page that will be using Livewire. In our case `welcome.blade.php`:
 
@@ -98,7 +98,7 @@ To demonstrate image optimization we will need a UI (User Interface), we will be
 ```
 
 3. We will then create a Livewire Component to handle our image uploads:
-
+   
    `php artisan make:livewire ImageUpload`
 
 This will create two files, one in `app/Http/Livewire/ImageUpload` and the other one
@@ -235,23 +235,23 @@ Cloudinary applying the necessary transformations for optimization, compression 
 
 1. First we use Livewires `WithFileUploads` to help us with file uploads, then create two variables `$media`
    and `$optimizedImage` which is an array that will contain the image URLs we get back from Cloudinary.
-
+   
    ```php
    use Livewire\WithFileUploads;
-
+   
    public $media;
    public $optimizedImage;
    ```
 2. Secondly, we will create the upload function which will upload the image file to [Cloudinary](https://cloudinary.com) and
    apply specific transformation which will compress, resize and optimize our images for a speedy web application.
-
+   
    ```php
    public function upload() {
     ...
-   }  
+   }
    ```
 3. Lets populate our method in step 2 above:
-
+   
    ```php
    public function upload() {
      // First we validate the input from the user
@@ -262,7 +262,7 @@ Cloudinary applying the necessary transformations for optimization, compression 
          'mimes:jpeg,jpg,png',
          ],
      ]);
-
+   
      /*We will now set the transformations required to optimize the images based on recommended optimization solutions*/
      $cloud_name = env('CLOUDINARY_CLOUD_NAME', 'dgrpkngjn');
      $folder = 'cloudinary-speed';
@@ -272,7 +272,7 @@ Cloudinary applying the necessary transformations for optimization, compression 
      $quality = 'auto';
      $fetch = 'auto';
      $crop = 'scale';
-
+   
      $optimal = cloudinary()->upload($media->getRealPath(), [
        'folder'         => $folder,
        'transformation' => [
@@ -283,43 +283,44 @@ Cloudinary applying the necessary transformations for optimization, compression 
          'crop'    => $crop
          ]
      ])->getSecurePath();
-
+   
      $non_optimal = cloudinary()->upload($media->getRealPath(),[
        'folder_name' => $folder   
      ])->getSecurePath();
-
+   
      // Optimized image fetching
      /* Fetching an optimized image applying the transformations we specified which will compress, resize and optimize our images for a speedy web application */
      $slice = Str::afterLast($image, '/');
      $optimized = "https://res.cloudinary.com/{$cloud_name}/image/upload/w_{$width},h_{$height},c_{$crop}/{$folder}/{$slice}";
-
+   
      $this->optimizedImage = $optimized;
-
+   
      // Non optimized version for comparison
      $this->media = $non_optimal;
-   } 
+   }
    ```
-
+   
    The code above will upload an image to Cloudinary and return an optimized image URL. Cloudinary automatically optimizes the image size with no compromise in quality. This is done by setting the `auto` value for the `quality` and `fetch_format` attributes. We have also specified the image width and height which will instruct Cloudinary to resize and scale the image based on these parameters.
-
+   
    **Note:** There is a non optimized image for comparison.
 
 If you successfully implemented the code above, you should be able to see the following when you navigate to your project on the browser:
 
 ![Speedy Web Apps with Cloudinary](https://res.cloudinary.com/dgrpkngjn/image/upload/v1655977607/assets/cloudinary_speed_vdsole.png)
 
-As you can see the Cloudinary Optimized Image loads faster. Don't take my word for it, you can test it out on this [demo](https://4pg3m.ciroue.com/). Just upload a super large image, less than 10 MB of course.
+As you can see the Cloudinary Optimized Image loads faster. Don't take my word for it, you can test it out on this [demo](https://4pg3m.ciroue.com/). Just upload a super large image, less than 10 MB of course.
 
 **Note:** Cloudinary is super powerful for the management of your media assets in your project that will not only optimize your assets for visual quality but also cost savings in terms of performance, storage, and AI-powered transformations as well.
 
-
 ## PHPSandbox
 
-The demo can be viewed in the sandbox embed below or directly on [PHPSandbox](https://phpsandbox.io/e/x/4pg3m?layout=EditorPreview&defaultPath=%2F&theme=dark&showExplorer=no&openedFiles=).
+The demo can be viewed in the sandbox embed below or directly on [PHPSandbox](https://phpsandbox.io/e/x/bwqwc?&layout=Preview&iframeId=oc49r9fs2v&theme=dark&defaultPath=/&showExplorer=no).
 
+<figure style="height: 500px;"><iframe src="https://phpsandbox.io/e/x/bwqwc?&layout=Preview&iframeId=qyh3evnzmu&theme=dark&defaultPath=/&showExplorer=no" style="display: block" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" height="100%" width="100%"></iframe></figure>
 
 # Optimization with Cloudinary
 
 Cloudinary is your A to Z media management solution - upload, storage, administration, manipulation, optimization and delivery.
 
 [Get started](https://cloudinary.com/signup) with Cloudinary in your Laravel projects for FREE!
+
