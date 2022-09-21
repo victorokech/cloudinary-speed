@@ -302,7 +302,7 @@ Cloudinary applying the necessary transformations for optimization, compression 
    
    The code above will upload an image to Cloudinary and return an optimized image URL. Cloudinary automatically optimizes the image size with no compromise in quality. This is done by setting the `auto` value for the `quality` and `fetch_format` attributes. We have also specified the image width and height which will instruct Cloudinary to resize and scale the image based on these parameters.
    
-   **Note:** There is a non optimized image for comparison.
+   **Note:** There is a non-optimized image for comparison.
 
 If you successfully implemented the code above, you should be able to see the following when you navigate to your project on the browser:
 
@@ -314,9 +314,9 @@ As you can see the Cloudinary Optimized Image loads faster. Don't take my word f
 
 ## PHPSandbox
 
-The demo can be viewed in the sandbox embed below or directly on [PHPSandbox](https://phpsandbox.io/e/x/bwqwc?&layout=Preview&iframeId=oc49r9fs2v&theme=dark&defaultPath=/&showExplorer=no).
+The demo can be viewed in the sandbox embed below or directly on [PHPSandbox](https://phpsandbox.io/e/x/h6qgu?&layout=Preview&iframeId=9t00ttm0qa&theme=dark&defaultPath=/&showExplorer=no).
 
-<figure style="height: 500px;"><iframe src="https://phpsandbox.io/e/x/bwqwc?&layout=Preview&iframeId=qyh3evnzmu&theme=dark&defaultPath=/&showExplorer=no" style="display: block" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" height="100%" width="100%"></iframe></figure>
+<figure style="height: 500px;"><iframe src="https://phpsandbox.io/e/x/h6qgu?&layout=Preview&iframeId=0dkluy2g7v&theme=dark&defaultPath=/&showExplorer=no" style="display: block" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" height="100%" width="100%"></iframe></figure>
 
 # Optimization with Cloudinary
 
